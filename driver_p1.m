@@ -11,4 +11,8 @@ for i = 1:length(w)
 end
 
 plot(w(31:70), result(31:70))
+
+Wt = result;
+Xt = MyiFT(Wt, w);
+figure, plot(t, Xt(t));
 % </Driver>
