@@ -92,6 +92,13 @@ for i = 1:length(set2)
     result2(i) = MyFT(tone1, tr1, set2(i));
 end
 
+% plot(set1, result1);
+% hold on
+% plot(set2, result2);
+
+% See 'tone_peaks.pdf' for example of plot used to identify component
+% frequencies. Same approach used for all subsequent tones.
+
 % Component frequencies: 4379 & 7596
 % Tone: 1
 
