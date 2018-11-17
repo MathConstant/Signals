@@ -1,5 +1,4 @@
-
-function c = conv(signal1, signal2)
+function c = Conv(signal1, signal2)
 	% signal1 will be kept stationary, signal2 shifted
 	lower_bound = 1;
 	upper_bound = length(signal1) + length(signal2);
