@@ -10,7 +10,7 @@ for i = 1:length(w)
     result(i) = MyFT(Xt, t, w(i));
 end
 
-figure,plot(w(31:70), result(31:70))
+figure, plot(w(31:70), result(31:70))
 
 Wt = result;
 Xt = MyiFT(Wt, w, t);
