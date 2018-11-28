@@ -52,7 +52,7 @@ sound(y,sr/2);
 % play the audio at double speed
 sound(y,sr*2);
 % Question 2
-
+%I think this might be Time Expansion
 
 % end of Question 2
 % Question 3: changing the length of x, without changing its general shape
