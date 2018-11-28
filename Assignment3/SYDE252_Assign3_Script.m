@@ -19,14 +19,31 @@ sound(newY,sr);
 % the spectra of the original signal and the synthesized signal
 % Comment on your observation
 
+% Build time-domain
+length_original = length(y);
+length_synthesized = length(newY);
 
+tDomain_original = 0:sr:(length_original-1) * sr;
+tDomain_synthesized = 0:sr:(length_synthesized-1) * sr;
 
+% specify frequency domain to inspect with FT
+w = -1000:1000;
+fDomain_length = length(w);
 
+result_original = zeros(1, fDomain_length);
+for i = 1:fDomain_length
+    result_original(i) = MyFT(y, tDomain_original, w(i));
+end
 
+result_synthesized = zeros(1, fDomain_length);
+for j = 1:fDomain_length
+    result_synthesized(j) = MyFT(newY, tDomain_synthesized, w(j));
+end
 
-
-
-
+plot(w, result_original)
+hold on
+plot(w, result_synthesized)
+hold off
 
 % end of Question 1
 %% Changing the speed of the speech, without significantly modifying the tone of the speech
