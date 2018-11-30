@@ -26,7 +26,7 @@ for aIdx = 1:size(aIn,1)
     newAngles = angles;
     newPoles = zeros(size(poles));
     for i = 1: size(angles)
-	if (magnitude*sin(angles(i)) ~= 0)
+	if (sin(angles(i)) ~= 0)
 		newAngles (i) = angles(i) + angles(i)*ratio;
         end   
         newPoles(i)= magnitude(i) * exp(1j*newAngles(i));
