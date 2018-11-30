@@ -93,9 +93,17 @@ y_f = synthVoice(a,g,1,x_f,0.5);
 y_s = synthVoice(a,g,1,x_s,2);
 
 % play the synthesized audio signal
-sound(y_f,sr);
-sound(y_s,sr);
+% UNCOMMENT SOUNDS TO COMPARE
 
+%sound(y,sr/2); % their slow
+%sound(y,sr); % original
+
+sound(y_s,sr); % our slow
+
+%sound(y,sr*2); % their fast
+%sound(y,sr); % original
+
+sound(y_f,sr); % our fast
 
 %% changing the tone without changing the speed
 
@@ -107,7 +115,7 @@ aHigh = myMovePoles_Group30(a,0.2);
 yHigh = synthVoice(aHigh,g,1,x,1);
 % play the new signal
 sound(yHigh,sr);
-
+%sound(y,sr); % original
 
 % move the poles so the resulting system function would have a higher gain
 % at lower frequencies
@@ -117,3 +125,4 @@ aLow = myMovePoles_Group30(a,-0.2);
 yLow = synthVoice(aLow,g,1,x,1);
 % play the new signal
 sound(yLow,sr);
+%sound(y,sr); % original
