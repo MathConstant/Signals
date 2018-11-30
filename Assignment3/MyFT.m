@@ -30,7 +30,7 @@ function Xw =  MyFT(Xt, t, w)
     for index = lb:ub
         time_val = t(index);
         signal_val = Xt(index); % value of Xt at time_val, index-keyed
-        sum = sum + signal_val * exponential(time_val);
+        sum = sum + signal_val * exponential(time_val) * time_inc;
     end
     
     Xw = sum;

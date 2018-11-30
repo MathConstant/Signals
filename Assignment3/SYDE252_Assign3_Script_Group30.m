@@ -20,26 +20,27 @@ sound(newY,sr);
 % Comment on your observation
 
 % Build time-domain
-% length_original = length(y);
-% length_synthesized = length(newY);
-% 
-% tDomain_original = 0:sr:(length_original-1) * sr;
-% tDomain_synthesized = 0:sr:(length_synthesized-1) * sr;
-% 
-% % specify frequency domain to inspect with FT
-% w = -1000:1000;
-% fDomain_length = length(w);
-% 
-% result_original = zeros(1, fDomain_length);
-% for i = 1:fDomain_length
-%     result_original(i) = MyFT(y, tDomain_original, w(i));
-% end
-% 
-% result_synthesized = zeros(1, fDomain_length);
-% for j = 1:fDomain_length
-%     result_synthesized(j) = MyFT(newY, tDomain_synthesized, w(j));
-% end
-% 
+length_original = length(y);
+length_synthesized = length(newY);
+
+time_inc = 1/sr; % sr is sample rate in Hz, time btwn samples = 1/sr
+tDomain_original = 0:time_inc:(length_original-1) * time_inc;
+tDomain_synthesized = 0:time_inc:(length_synthesized-1) * time_inc;
+
+% specify frequency domain to inspect with FT
+w = -100:100;
+fDomain_length = length(w);
+
+result_original = zeros(1, fDomain_length);
+for i = 1:fDomain_length
+    result_original(i) = MyFT(y, tDomain_original, w(i));
+end
+
+result_synthesized = zeros(1, fDomain_length);
+for j = 1:fDomain_length
+    result_synthesized(j) = MyFT(newY, tDomain_synthesized, w(j));
+end
+
 % plot(w, result_original)
 % hold on
 % plot(w, result_synthesized)
@@ -51,6 +52,7 @@ sound(newY,sr);
 sound(y,sr/2);
 % play the audio at double speed
 sound(y,sr*2);
+
 % Question 2
 % The property that explains why tone is lowered when the audio is played at half speed is the time-scaling property.  
 % According to this property, when a function is expanded in time by a factor a "a", its Fourier Transform is compressed in frequency by “a”. 
