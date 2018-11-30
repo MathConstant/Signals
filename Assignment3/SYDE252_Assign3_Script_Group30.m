@@ -27,8 +27,10 @@ time_inc = 1/sr; % sr is sample rate in Hz, time btwn samples = 1/sr
 tDomain_original = 0:time_inc:(length_original-1) * time_inc;
 tDomain_synthesized = 0:time_inc:(length_synthesized-1) * time_inc;
 
+% plot(tDomain_original, y);
+
 % specify frequency domain to inspect with FT
-w = -100:100;
+w = 0:1000;
 fDomain_length = length(w);
 
 result_original = zeros(1, fDomain_length);
@@ -41,10 +43,10 @@ for j = 1:fDomain_length
     result_synthesized(j) = MyFT(newY, tDomain_synthesized, w(j));
 end
 
-% plot(w, result_original)
-% hold on
-% plot(w, result_synthesized)
-% hold off
+plot(w, result_original)
+hold on
+plot(w, result_synthesized)
+hold off
 
 % end of Question 1
 %% Changing the speed of the speech, without significantly modifying the tone of the speech
@@ -54,6 +56,9 @@ sound(y,sr/2);
 sound(y,sr*2);
 
 % Question 2
+% Playing the audio signal with a lower sample rate is equivalent to
+% increasing the time interval between data points, 
+
 % The property that explains why tone is lowered when the audio is played at half speed is the time-scaling property.  
 % According to this property, when a function is expanded in time by a factor a "a", its Fourier Transform is compressed in frequency by “a”. 
 % 
