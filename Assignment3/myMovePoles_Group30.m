@@ -21,14 +21,17 @@ for aIdx = 1:size(aIn,1)
     % write your code to move the poles' positions using the input
     % argument 'ratio'.
     % please comment on why all the poles obtained are either real or
-    % complex conjugate pairs
-	newAngles = zeros(size(angles));
+    % complex conjugate pairs   
+    
+    newAngles = angles;
+    newPoles = zeros(size(poles));
     for i = 1: size(angles)
-		if arcsin(angles(1)) != 0
-			newAngles (i) = angles(i) + angles(i)*ratio;
-		end
-	end
-    newPoles = magnitude.*exp(i*newAngles)
+	if (magnitude*sin(angles(i)) ~= 0)
+		newAngles (i) = angles(i) + angles(i)*ratio;
+        end   
+        newPoles(i)= magnitude(i) * exp(1j*newAngles(i));
+    end     
+    
     % You need to achieve the following:
     % 1, do NOT move real poles
     % 2, after the move, the poles that are conjugate pair should still be conjugate pairs
