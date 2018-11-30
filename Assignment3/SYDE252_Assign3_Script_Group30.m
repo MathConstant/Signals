@@ -19,10 +19,9 @@ sound(newY,sr);
 % the spectra of the original signal and the synthesized signal
 % Comment on your observation
 
-% Build time-domain
+% Build time domains
 length_original = length(y);
 length_synthesized = length(newY);
-
 time_inc = 1/sr; % sr is sample rate in Hz, time btwn samples = 1/sr
 tDomain_original = 0:time_inc:(length_original-1) * time_inc;
 tDomain_synthesized = 0:time_inc:(length_synthesized-1) * time_inc;
@@ -30,23 +29,21 @@ tDomain_synthesized = 0:time_inc:(length_synthesized-1) * time_inc;
 % plot(tDomain_original, y);
 
 % specify frequency domain to inspect with FT
-w = 0:1000;
+w = 0:10; % INCREASE THIS TO VIEW FTs (try 500:1500!)
 fDomain_length = length(w);
 
 result_original = zeros(1, fDomain_length);
+result_synthesized = zeros(1, fDomain_length);
 for i = 1:fDomain_length
     result_original(i) = MyFT(y, tDomain_original, w(i));
+    result_synthesized(i) = MyFT(newY, tDomain_synthesized, w(i));
 end
 
-result_synthesized = zeros(1, fDomain_length);
-for j = 1:fDomain_length
-    result_synthesized(j) = MyFT(newY, tDomain_synthesized, w(j));
-end
-
-plot(w, result_original)
-hold on
-plot(w, result_synthesized)
-hold off
+% UNCOMMENT THESE TO VIEW FTs
+% figure, plot(w, abs(result_original))
+% hold on
+% plot(w, abs(result_synthesized))
+% hold off
 
 % end of Question 1
 %% Changing the speed of the speech, without significantly modifying the tone of the speech
@@ -56,15 +53,20 @@ sound(y,sr/2);
 sound(y,sr*2);
 
 % Question 2
-% Playing the audio signal with a lower sample rate is equivalent to
-% increasing the time interval between data points, 
+% *Playing the audio signal with a lower sample rate is equivalent to
+% increasing the time interval between data points*
 
-% The property that explains why tone is lowered when the audio is played at half speed is the time-scaling property.  
-% According to this property, when a function is expanded in time by a factor a "a", its Fourier Transform is compressed in frequency by “a”. 
+% The property that explains why tone is lowered when the audio is played
+% at half speed is the time-scaling property.
+% According to this property, when a function is expanded in time by a
+% factor of "a", its Fourier Transform is compressed in frequency by “a”.
+% In other words, 'stretching' the signal in time domain leads to a lower
+% frequency, and 'compressing' in time domain leads to a higher frequency.
 % 
-% x(t/a) -> aX(?a)
+% x(t/a) -> aX(wa)
 % 
-% Lower frequencies have a lower pitch therefore an increases in time will make the output signal sound lower and vice versa.
+% Lower frequencies have a lower pitch therefore an increases in time will
+% make the output signal sound lower and vice versa.
 
 % end of Question 2
 
