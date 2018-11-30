@@ -59,13 +59,13 @@ sound(y,sr*2);
 % The property that explains why tone is lowered when the audio is played
 % at half speed is the time-scaling property.
 % According to this property, when a function is expanded in time by a
-% factor of "a", its Fourier Transform is compressed in frequency by “a”.
+% factor of "a", its Fourier Transform is compressed in frequency by â€œaâ€.
 % In other words, 'stretching' the signal in time domain leads to a lower
 % frequency, and 'compressing' in time domain leads to a higher frequency.
 % 
 % x(t/a) -> aX(wa)
 % 
-% Lower frequencies have a lower pitch therefore an increases in time will
+% Lower frequencies have a lower pitch therefore an expansion in time will
 % make the output signal sound lower and vice versa.
 
 % end of Question 2
